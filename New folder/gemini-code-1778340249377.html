@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Solution | Elachi Bagh, Srinagar</title>
+    <style>
+        /* Premium Bold Aesthetic: Deep rich purple tones, clean white text, vibrant orange CTA */
+        :root {
+            --brand-purple: #2b1b4e; 
+            --brand-purple-dark: #190f2e;
+            --brand-orange: #ff6600; 
+            --brand-orange-hover: #e05a00;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-light: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Sleek Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--brand-purple-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--brand-orange);
+        }
+
+        .btn-header {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            background-color: var(--brand-orange);
+            color: #ffffff;
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--brand-orange-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Split Screen Hero Section */
+        .hero {
+            display: flex;
+            min-height: 80vh;
+            background-color: var(--brand-purple);
+        }
+
+        .hero-image {
+            flex: 1.2;
+            /* Loading locally saved webp image 1 */
+            background: url('gym-floor-1.webp') center/cover no-repeat;
+            min-height: 400px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 80px 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: var(--brand-purple);
+        }
+
+        .hero-content h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            color: #e0e0e0;
+            max-width: 500px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 5%;
+            background-color: var(--brand-purple-dark);
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .price-card.highlight {
+            border: 2px solid var(--brand-orange);
+            background: linear-gradient(145deg, #1e1e1e, #2a1b40);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-orange);
+            color: #fff;
+            padding: 6px 16px;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+        }
+
+        .price-card h3 { font-size: 24px; text-transform: uppercase; margin-bottom: 15px; }
+        .price-card .amount { font-size: 48px; font-weight: 900; color: var(--brand-orange); margin-bottom: 15px; }
+        .price-card .amount span { font-size: 16px; color: #aaa; font-weight: normal; }
+        .price-card ul { list-style: none; margin-bottom: 30px; color: #ccc; font-size: 16px; line-height: 2; }
+
+        /* Facility Showcase Section */
+        .facility {
+            padding: 80px 5%;
+            background-color: var(--bg-dark);
+            text-align: center;
+        }
+
+        .facility h2 {
+            font-size: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #222;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 { font-size: 22px; margin-bottom: 10px; text-transform: uppercase; font-weight: 900; }
+        .card p { color: #bbb; font-size: 15px; }
+
+        /* Timings & Contact Section */
+        .info-section {
+            padding: 80px 5%;
+            background-color: var(--brand-purple-dark);
+            display: flex;
+            justify-content: center;
+        }
+
+        .info-box {
+            background-color: var(--card-bg);
+            padding: 50px;
+            border-radius: 8px;
+            border-top: 5px solid var(--brand-orange);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .info-box h2 {
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .timings-container {
+            margin: 30px 0;
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .timing-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 18px;
+        }
+        .timing-row:last-child { border-bottom: none; }
+        .timing-label { font-weight: bold; color: var(--brand-orange); }
+
+        .contact-details {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #0b0614;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; }
+            .hero-image { width: 100%; min-height: 350px; flex: none; }
+            .hero-content { padding: 50px 5%; align-items: center; text-align: center; }
+            .hero-content h1 { font-size: 48px; }
+            .timing-row { flex-direction: column; text-align: center; gap: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Fitness <span>Solution</span></div>
+        <a href="tel:08825066497" class="btn-header">📞 Call Live: 08825066497</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image" role="img" aria-label="Fitness Solution Gym Floor"></div>
+        <div class="hero-content">
+            <h1>Transform<br>Today.</h1>
+            <p>Srinagar's ultimate fitness destination. Massive equipment floor, authentic coaching, and dedicated batch timings designed for your real results.</p>
+            <a href="tel:08825066497" class="btn">📞 Call To Join</a>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <h2>Simple, Unbeatable Pricing</h2>
+        <div class="pricing-grid">
+            
+            <div class="price-card">
+                <h3>Monthly Plan</h3>
+                <div class="amount">₹500<span> / mo</span></div>
+                <ul>
+                    <li>Full Gym Floor Access</li>
+                    <li>Professional Form Coaching</li>
+                    <li>Dedicated Batch Timings</li>
+                </ul>
+                <a href="tel:08825066497" class="btn" style="padding: 12px 24px; font-size: 16px;">Call Now</a>
+            </div>
+
+            <div class="price-card highlight">
+                <div class="badge">Best Value Deal</div>
+                <h3>3-Month Package</h3>
+                <div class="amount">₹1000<span> / 3 mos</span></div>
+                <ul>
+                    <li><strong>Save ₹500 instantly</strong></li>
+                    <li>Full Gym Floor Access</li>
+                    <li>Personalized Consultation Advice</li>
+                </ul>
+                <a href="tel:08825066497" class="btn" style="padding: 12px 24px; font-size: 16px;">Claim Deal</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="facility">
+        <h2>Your Facility & Coaching</h2>
+        <div class="grid-3">
+            
+            <div class="card">
+                <img src="gym-floor-1.webp" alt="Extensive Gym Floor" onerror="this.style.display='none'">
+                <div class="card-content">
+                    <h3>Heavy-Duty Setup</h3>
+                    <p>Train in a spacious environment packed with plate-loaded machines, pure free weights, and heavy-duty strength equipment to maximize every workout.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="gym-floor-2.webp" alt="Core Strength Floor" onerror="this.style.display='none'">
+                <div class="card-content">
+                    <h3>Complete Equipment</h3>
+                    <p>Never wait in line for essential gear. We provide expansive workout zones optimized for both heavy lifting and intense conditioning.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="office.webp" alt="Consultation Office & Supplements" style="object-position: top;" onerror="this.style.display='none'">
+                <div class="card-content">
+                    <h3>Direct Guidance & Nutrition</h3>
+                    <p>Sit down in our dedicated office space for genuine form corrections, tailored goal tracking, and immediate access to authentic whey protein and supplements.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-box">
+            <h2>Location & Exclusive Timings</h2>
+            
+            <div class="timings-container">
+                <div class="timing-row">
+                    <span class="timing-label">🚹 Gents (Morning Batch)</span>
+                    <span>5:00 AM &ndash; 9:00 AM</span>
+                </div>
+                <div class="timing-row">
+                    <span class="timing-label">🚺 Ladies (Exclusive Batch)</span>
+                    <span>9:00 AM &ndash; 1:00 PM</span>
+                </div>
+                <div class="timing-row">
+                    <span class="timing-label">🚹 Gents (Evening Batch)</span>
+                    <span>2:00 PM &ndash; 11:00 PM</span>
+                </div>
+            </div>
+
+            <div class="contact-details">
+                <p style="margin-bottom: 10px;"><strong>📍 Address:</strong> Elachi Bagh, Srinagar, Jammu and Kashmir 190008</p>
+                <p style="margin-bottom: 30px;"><strong>📞 Direct Line:</strong> 08825066497</p>
+                
+                <a href="tel:08825066497" class="btn" style="width: 100%; text-align: center;">📞 Click Here To Call Live</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Fitness Solution. Elachi Bagh, Srinagar. All rights reserved.
+    </footer>
+
+</body>
+</html>
